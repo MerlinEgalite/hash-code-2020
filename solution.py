@@ -1,6 +1,7 @@
 import parser
 import loader
 import encoder
+import test_hashcode as test
 
 def new_score_book(config, book):
 
@@ -20,7 +21,6 @@ def new_score_lib(config, library):
 
 
 def output(config):
-
     solution = {'libraries': {}, 'libraries_order': []}
 
     # Create sorted list of libraries
@@ -35,4 +35,9 @@ def output(config):
 
     return solution
 
-encoder.encoder("./solutions/a.txt", output(loader.a))
+config = loader.a
+solution = output(config)
+if test.is_valid(config, solution):
+    print("Score: {}".format(test.model(config, solution)))
+    encoder.encoder("./solutions/a.txt", solution)
+else: print("Solution not found!")
