@@ -3,10 +3,7 @@ import loader
 import encoder
 import test_hashcode as test
 
-def new_score_book(config, book):
-
-
-
+def new_score_book(config, book_id):
 
     return 1
 
