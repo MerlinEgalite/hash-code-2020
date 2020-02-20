@@ -34,8 +34,8 @@ def model(config, solution):
     # Computing the score for this solution
     score = 0
 
+    shipped_books = [] # already shipped books
     states = copy.deepcopy(solution["libraries"]) # current state of libraries (books remaining to be shipped)
-    
     libraries_order = solution["libraries_order"] # the order in which librairies will sign up
     if len(libraries_order) > 0:
         libraries_signed = [] # libraries currently signed up, that can ship books
@@ -59,7 +59,9 @@ def model(config, solution):
                 for i in range(velocity):
                     if len(remaining_books_order) > 0:
                         shipped_book_id = remaining_books_order.pop(0)
-                        score += config["books"][shipped_book_id]
+                        if shipped_book_id not in shipped_books:
+                            score += config["books"][shipped_book_id]
+                            shipped_books.append(shipped_book_id)
     
     return score
 
@@ -76,30 +78,3 @@ def is_valid(config, solution):
 def compute(config, solution):
     is_valid(config, solution)
     return model(config, solution)
-
-model({
-        "books": [1, 2, 3, 6, 5, 4],
-        "libraries": [
-            {
-                "books": [0, 1, 2, 3, 4],
-                "signup_time": 2,
-                "velocity": 2
-            },
-            {
-                "books": [3, 2, 5, 0],
-                "signup_time": 3,
-                "velocity": 1
-            }
-        ],
-        "days": 7
-    }, {
-        "libraries_order": [1, 0],
-        "libraries": {
-            0: {
-                "books_order": [0, 1, 2, 3, 4]
-            },
-            1: {
-                "books_order": [5, 2, 3]
-            }
-        }
-    })
