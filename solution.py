@@ -27,14 +27,16 @@ def output(config):
 
         # Create sorted list of books within a libraries
         books_order = {}
-        books_order['books_order'] = sorted(config['libraries'][value]['books'], key=lambda book: new_score_book(config, book))
+        books_order['books_order'] = sorted(config['libraries'][value]['books'], key=lambda book_id: new_score_book(config, book_id))
         solution['libraries'][value] = books_order
 
     return solution
 
-config = loader.a
-solution = output(config)
-if test.is_valid(config, solution):
-    print("Score: {}".format(test.model(config, solution)))
-    encoder.encoder("./solutions/a.txt", solution)
-else: print("Solution not found!")
+datasets = ["a", "b", "c", "d", "e", "f"]
+for index, config in enumerate([loader.a, loader.b, loader.c, loader.d, loader.e, loader.f]):
+    dataset = datasets[index]
+    solution = output(config)
+    if test.is_valid(config, solution):
+        print("Score {}: {}".format(dataset, test.model(config, solution)))
+        encoder.encoder("./solutions/{}.txt".format(dataset), solution)
+    else: print("Solution not found!")
