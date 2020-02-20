@@ -78,30 +78,3 @@ def is_valid(config, solution):
 def compute(config, solution):
     is_valid(config, solution)
     return model(config, solution)
-
-model({
-        "books": [1, 2, 3, 6, 5, 4],
-        "libraries": [
-            {
-                "books": [0, 1, 2, 3, 4],
-                "signup_time": 2,
-                "velocity": 2
-            },
-            {
-                "books": [3, 2, 5, 0],
-                "signup_time": 3,
-                "velocity": 1
-            }
-        ],
-        "days": 7
-    }, {
-        "libraries_order": [1, 0],
-        "libraries": {
-            0: {
-                "books_order": [0, 1, 2, 3, 4]
-            },
-            1: {
-                "books_order": [5, 2, 3]
-            }
-        }
-    })
