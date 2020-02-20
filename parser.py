@@ -19,10 +19,12 @@ def configConstructor(file):
 
 
 
-#for dataPath in os.listdir('./datasets'):
-#    with open("./pickle/%s.pickle"%dataPath[0],"wb") as dataFile: # On appelle les pickle juste a b c d e f
-#        pickle.dump(configConstructor("./datasets/%s"%dataPath),dataFile)
-#    break
+for dataPath in os.listdir('./datasets'):
 
-#with open("prout.pickle","wb") as truc:
-#    pickle.dump(configConstructor("./datasets/a_example.txt"), truc)
+    with open("./pickle/%s.pickle"%dataPath[0],"wb") as dataFile: # On appelle les pickle juste a b c d e f
+        dictio = configConstructor("./datasets/%s"%dataPath)
+        pickle.dump(dictio,dataFile)
+
+
+with open("prout.pickle","wb") as truc:
+    pickle.dump(configConstructor("./datasets/a_example.txt"), truc)
