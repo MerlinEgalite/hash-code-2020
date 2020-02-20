@@ -4,11 +4,14 @@ import pickle
 
 
 import parser
+import loader
 
 config = parser.configConstructor('./datasets/a_example.txt')
 
 
 def new_score_book(book):
+
+
 
 
     return 1
@@ -41,3 +44,5 @@ def output(config):
 
 
 sol = output(config)
+
+
