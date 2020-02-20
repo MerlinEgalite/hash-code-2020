@@ -1,18 +1,4 @@
-
-solTest= {
-        "libraries_order": [1, 0],
-        "libraries": {
-            0: {
-                "books_order": [0, 1, 2, 3, 4]
-            },
-            1: {
-                "books_order": [5, 2, 3]
-            }
-        }
-    }
-
-
-def encoder(pathToSave,solution):
+def encoder(pathToSave,solution): # le path puis le dict
     with open(pathToSave,"w") as savedFile:
         savedFile.writelines(str(len(solution["libraries_order"])))
         savedFile.writelines("\n")
@@ -24,4 +10,3 @@ def encoder(pathToSave,solution):
             savedFile.writelines(" ".join(map(str,librarie["books_order"])))
             savedFile.writelines("\n")
 
-encoder("./test.txt",solTest)
