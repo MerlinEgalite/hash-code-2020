@@ -1,5 +1,7 @@
 import pickle
 import os
+
+
 def configConstructor(file):
     result = {}
     with open(file) as data :
@@ -16,8 +18,6 @@ def configConstructor(file):
             libraries.append(librarie)
         result["libraries"]=libraries
     return result
-
-
 
 #for dataPath in os.listdir('./datasets'):
 #    with open("./pickle/%s.pickle"%dataPath[0],"wb") as dataFile: # On appelle les pickle juste a b c d e f
